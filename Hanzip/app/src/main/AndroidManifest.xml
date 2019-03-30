@@ -28,7 +28,8 @@
         <activity android:name=".login.JoinActivity2" />
         <activity android:name=".Main.MainActivity" />
         <activity android:name=".Main.HouseInfoActivity" />
-        <activity android:name=".Main.RegisterActivity"></activity>
+        <activity android:name=".Main.RegisterActivity" />
+        <activity android:name=".mypage.MypageActivity"></activity>
     </application>
 
 </manifest>
