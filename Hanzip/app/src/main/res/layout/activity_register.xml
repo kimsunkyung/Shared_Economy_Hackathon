@@ -100,7 +100,7 @@
 
                     <EditText
                         android:layout_marginTop="5dp"
-                        android:hint="집주인분의 성별을 입력하세요."
+                        android:hint="선호하시는 성별을 입력하세요."
                         android:id="@+id/input_home_sex"
                         android:textSize="15dp"
                         android:layout_marginLeft="20dp"
