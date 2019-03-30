@@ -44,6 +44,7 @@ public class JoinAsyncTask extends AsyncTask<String, Integer, JoinResult> {
         String phoneNumber = strings[5];
         String pw = strings[6];
         String role = strings[7];
+        String sex = strings[8];
 
         JoinResult result  = null;
 
@@ -55,6 +56,7 @@ public class JoinAsyncTask extends AsyncTask<String, Integer, JoinResult> {
         params.put("phoneNumber", phoneNumber);
         params.put("pw", pw);
         params.put("role", role);
+        params.put("sex", sex);
 
         HttpRequest request = new HttpRequest();
 

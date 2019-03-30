@@ -28,7 +28,7 @@ public class HttpRequest {
     private static final int TIMEOUT_CONNECTION = 80000;
     private static final int TIMEOUT_READ = 60000;
 
-    private static final String SERVER_URL = "http://54.180.67.243:8094/shared";
+    private static final String SERVER_URL = "http://15.164.57.47:8094/shared";
 
 
     /**

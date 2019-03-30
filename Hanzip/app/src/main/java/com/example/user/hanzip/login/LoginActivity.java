@@ -9,13 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.user.hanzip.MainActivity;
+import com.example.user.hanzip.Main.MainActivity;
 import com.example.user.hanzip.R;
 import com.example.user.hanzip.network.ApiValue;
 import com.example.user.hanzip.network.response.LoginResult;
 
 public class LoginActivity extends AppCompatActivity {
-    public static String real_user_id,real_name,real_phone,real_addr,real_age,real_role;
+    public static String real_user_id,real_name,real_phone,real_addr,real_role;
+    public static int real_age;
     EditText user_id,user_pw;
     Button login,join;
     String u_id,u_pw;
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         real_name = result.getName().toString();
                         real_phone = result.getPhoneNumber().toString();
                         real_addr = result.getAddress().toString();
-                        real_age = result.getAge().toString();
+                        real_age = result.getAge();
                         real_role = result.getRole().toString();
                         Log.d("real_user_id", String.valueOf(real_user_id));
                         Log.d("real_user_name", String.valueOf(real_name));

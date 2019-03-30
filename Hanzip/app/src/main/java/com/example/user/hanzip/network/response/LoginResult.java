@@ -17,6 +17,17 @@ public class LoginResult {
     @SerializedName("id")
     private String userid = "";
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    @SerializedName("sex")
+    private String sex = "";
+
     @SerializedName("name")
     private String name ="";
 
@@ -26,8 +37,16 @@ public class LoginResult {
     @SerializedName("address")
     private String address ="";
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     @SerializedName("age")
-    private String age ="";
+    private int age =0;
 
     @SerializedName("role")
     private String role ="";
@@ -64,13 +83,6 @@ public class LoginResult {
         this.address = address;
     }
 
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
 
     public String getRole() {
         return role;

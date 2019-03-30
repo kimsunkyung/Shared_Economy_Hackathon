@@ -1,14 +1,19 @@
 package com.example.user.hanzip.login;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.user.hanzip.R;
@@ -16,16 +21,22 @@ import com.example.user.hanzip.network.ApiValue;
 import com.example.user.hanzip.network.response.JoinResult;
 
 public class JoinActivity2 extends AppCompatActivity {
-    SharedPreferences mPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+    SharedPreferences mPref;
     EditText n_userage,n_addr;
-    Button n_m,n_w,n_y,n_o;
+    RadioButton n_m,n_w,n_y,n_o;
     String new_userage,new_usergender = "",new_userrole = "";
     Button join;
+    RadioGroup rg_gender,rg_role;
     String new_id,new_pw,new_name,new_phone,new_addr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_join);
+        setContentView(R.layout.activity_join2);
+
+        rg_gender =findViewById(R.id.radioGroup_gender);
+        rg_role = findViewById(R.id.radioGroup_role);
+
+        mPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         n_userage = findViewById(R.id.nuser_age);
         n_addr = findViewById(R.id.nuser_addr);
         n_m = findViewById(R.id.nuser_m);
@@ -34,88 +45,39 @@ public class JoinActivity2 extends AppCompatActivity {
         n_o = findViewById(R.id.nuser_o);
         join = findViewById(R.id.join);
         new_id = mPref.getString("new_id", "");
-        new_pw = mPref.getString("new_pw","");
-        new_name = mPref.getString("new_name","");
-        new_phone = mPref.getString("new_phone","");
+        new_pw = mPref.getString("new_pw", "");
+        new_name = mPref.getString("new_name", "");
+        new_phone = mPref.getString("new_phone", "");
 
-       n_m.setOnTouchListener(new View.OnTouchListener() {
-           @Override
-           public boolean onTouch(View v, MotionEvent event) {
-               switch (event.getAction()){
-                   case MotionEvent.ACTION_DOWN:{
-                       n_m.setBackgroundResource(R.drawable.b_man);
-                       new_usergender = "남자";
-                       break;
-                   }
-                   case MotionEvent.ACTION_UP:{
-                       n_m.setBackgroundResource(R.drawable.a_man);
-                       break;
-                   }
-               }
-               return false;
-           }
-       });
-
-        n_w.setOnTouchListener(new View.OnTouchListener() {
+        rg_gender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN:{
-                        n_m.setBackgroundResource(R.drawable.b_woman);
-                        new_usergender = "여자";
-                        break;
-                    }
-                    case MotionEvent.ACTION_UP:{
-                        n_m.setBackgroundResource(R.drawable.a_woman);
-                        break;
-                    }
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nuser_m) {
+                    new_usergender = "남";
+                } else if (checkedId == R.id.nuser_w) {
+                    new_usergender = "여";
                 }
-                return false;
+            }
+        });
+
+        rg_role.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.nuser_o) {
+                    new_userrole = "노인";
+                } else if (checkedId == R.id.nuser_y) {
+                    new_userrole = "청년";
+                }
             }
         });
 
 
-        n_y.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN:{
-                        n_y.setBackgroundResource(R.drawable.b_young);
-                        new_userrole = "청년";
-                        break;
-                    }
-                    case MotionEvent.ACTION_UP:{
-                        n_y.setBackgroundResource(R.drawable.a_young);
-                        break;
-                    }
-                }
-                return false;
-            }
-        });
-
-        n_o.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN:{
-                        n_o.setBackgroundResource(R.drawable.b_old);
-                        new_userrole = "노인";
-                        break;
-                    }
-                    case MotionEvent.ACTION_UP:{
-                        n_o.setBackgroundResource(R.drawable.a_old);
-                        break;
-                    }
-                }
-                return false;
-            }
-        });
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new_userage = n_userage.getText().toString();
                 new_addr = n_addr.getText().toString();
-                if(new_addr.isEmpty() || new_userage.isEmpty() || new_usergender.isEmpty() || new_userrole.isEmpty() ){
+                if (new_addr.isEmpty() || new_userage.isEmpty() || new_usergender.isEmpty() || new_userrole.isEmpty()) {
                     Toast.makeText(JoinActivity2.this, "모든 항목을 입력해주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -127,7 +89,7 @@ public class JoinActivity2 extends AppCompatActivity {
 
 
     public void join_in(){
-        JoinAsyncTask searchAsyncTask = new JoinAsyncTask(new JoinAsyncTask.JoinResultHandler() {
+        JoinAsyncTask joinAsyncTask = new JoinAsyncTask(new JoinAsyncTask.JoinResultHandler() {
 
             @Override
             public void onSuccessAppAsyncTask(JoinResult result) {
@@ -165,6 +127,6 @@ public class JoinActivity2 extends AppCompatActivity {
         });
 
 
-        searchAsyncTask.execute(ApiValue.API_JOIN,new_addr,new_userage,new_id,new_name,new_phone, new_pw, new_userrole);
+        joinAsyncTask.execute(ApiValue.API_JOIN,new_addr,new_userage,new_id,new_name,new_phone, new_pw, new_userrole,new_usergender);
     }
 }

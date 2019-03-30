@@ -13,7 +13,8 @@ import android.widget.Toast;
 import com.example.user.hanzip.R;
 
 public class JoinActivity extends AppCompatActivity {
-    SharedPreferences mPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+    SharedPreferences mPref;
     EditText n_userid,n_userpw,n_username,n_phone;
     String new_userid,new_userpw,new_username,new_phone;
     Button next;
@@ -26,7 +27,7 @@ public class JoinActivity extends AppCompatActivity {
         n_username = findViewById(R.id.nuser_name);
         n_phone = findViewById(R.id.nuser_phone);
         next = findViewById(R.id.next);
-
+        mPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
 
         next.setOnClickListener(new View.OnClickListener() {
