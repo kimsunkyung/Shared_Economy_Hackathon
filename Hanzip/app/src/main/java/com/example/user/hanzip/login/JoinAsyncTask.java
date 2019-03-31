@@ -1,6 +1,7 @@
 package com.example.user.hanzip.login;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.user.hanzip.network.HttpRequest;
 import com.example.user.hanzip.network.response.JoinResult;
@@ -57,6 +58,16 @@ public class JoinAsyncTask extends AsyncTask<String, Integer, JoinResult> {
         params.put("pw", pw);
         params.put("role", role);
         params.put("sex", sex);
+
+        Log.d("address",address);
+        Log.d("age", String.valueOf(age));
+        Log.d("id",id);
+        Log.d("name",name);
+        Log.d("phoneNumber",phoneNumber);
+        Log.d("pw",pw);
+        Log.d("role",role);
+        Log.d("sex",sex);
+
 
         HttpRequest request = new HttpRequest();
 

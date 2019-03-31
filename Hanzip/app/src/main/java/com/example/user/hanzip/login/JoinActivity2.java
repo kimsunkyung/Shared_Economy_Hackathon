@@ -53,9 +53,9 @@ public class JoinActivity2 extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nuser_m) {
-                    new_usergender = "남";
-                } else if (checkedId == R.id.nuser_w) {
                     new_usergender = "여";
+                } else if (checkedId == R.id.nuser_w) {
+                    new_usergender = "남";
                 }
             }
         });
@@ -64,9 +64,9 @@ public class JoinActivity2 extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.nuser_o) {
-                    new_userrole = "노인";
-                } else if (checkedId == R.id.nuser_y) {
                     new_userrole = "청년";
+                } else if (checkedId == R.id.nuser_y) {
+                    new_userrole = "노인";
                 }
             }
         });
@@ -81,6 +81,8 @@ public class JoinActivity2 extends AppCompatActivity {
                     Toast.makeText(JoinActivity2.this, "모든 항목을 입력해주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                Toast.makeText(JoinActivity2.this, new_usergender, Toast.LENGTH_SHORT).show();
+                Toast.makeText(JoinActivity2.this, new_userrole, Toast.LENGTH_SHORT).show();
                 join_in();
             }
         });

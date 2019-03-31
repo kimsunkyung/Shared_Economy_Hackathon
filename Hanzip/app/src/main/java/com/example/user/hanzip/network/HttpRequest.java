@@ -1,6 +1,8 @@
 package com.example.user.hanzip.network;
 
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -149,6 +151,7 @@ public class HttpRequest {
         urlStr.append(SERVER_URL);
         urlStr.append(api_path);
 
+        Log.d("path", String.valueOf(urlStr));
         if(params != null && params.size() > 0){
             Iterator<String> paramsKey = params.keySet().iterator();
 
