@@ -8,6 +8,9 @@ import com.example.user.hanzip.network.response.MainResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainListAsyncTask extends AsyncTask<String, Integer, MainResult> {
 
 
@@ -35,12 +38,14 @@ public class MainListAsyncTask extends AsyncTask<String, Integer, MainResult> {
     @Override
     protected MainResult doInBackground(String... strings) {
         String path = strings[0];
+
         MainResult result  = null;
+
 
         HttpRequest request = new HttpRequest();
 
         try {
-            String str = request.callRequestServer(path,  "GET",null);
+            String str = request.callRequestServer(path,  "GET", null);
 
             Gson gson = new GsonBuilder().create();
             result = gson.fromJson(str, MainResult.class);

@@ -6,6 +6,9 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".Main.MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:background="@drawable/background"
         android:layout_width="match_parent"
@@ -14,7 +17,7 @@
         <ImageButton
             android:id="@+id/mypage_btn"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="300dp"
+            android:layout_marginLeft="330dp"
             android:background="@drawable/mypage"
             android:layout_width="50dp"
             android:layout_height="50dp" />
@@ -23,11 +26,12 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="100dp"
             android:background="@drawable/search_box"
-            android:id="@+id/nuser_id"
+            android:id="@+id/search"
             android:layout_width="300dp"
             android:layout_height="50dp" />
 
         <Button
+            android:id="@+id/search_icon"
             android:background="@drawable/search_icon"
             android:layout_marginTop="110dp"
             android:layout_marginLeft="290dp"
@@ -35,11 +39,12 @@
             android:layout_height="30dp" />
     </RelativeLayout>
 
-
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="10dp"
         android:id="@+id/recycler_view"
         android:layout_gravity="center"
         android:layout_width="wrap_content"

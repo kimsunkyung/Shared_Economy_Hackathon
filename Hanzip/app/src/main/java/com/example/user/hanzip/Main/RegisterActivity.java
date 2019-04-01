@@ -47,10 +47,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         input_caution2 = findViewById(R.id.input_caution2);
 
         input_image = findViewById(R.id.input_house_img);
-        register = findViewById(R.id.register);
+        register = findViewById(R.id.register_btn1);
 
 
         input_image.setOnClickListener(this);
+        register.setOnClickListener(this);
     }
 
     @Override
@@ -64,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 startActivityForResult(intent, 1);
                 break;
 
-            case R.id.register:
+            case R.id.register_btn1:
                 r_name = input_name.getText().toString();
                 r_addr = input_addr.getText().toString();
                 r_caution1 = input_caution.getText().toString();
@@ -73,7 +74,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 r_price = input_price.getText().toString();
                 r_provide1 = input_provide.getText().toString();
                 r_provide2 = input_provide2.getText().toString();
-
                 server();
                 break;
         }

@@ -43,7 +43,8 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MainLi
         if(position>mainList.size()){}
         MainListVO item = mainList.get(position);
         ((MainListHolder)holder).address.setText(item.getAddress().toString());
-        ((MainListHolder)holder).price.setText(item.getPrice());
+        ((MainListHolder)holder).name.setText(item.getName().toString());
+        ((MainListHolder)holder).price.setText(String.valueOf(item.getPrice())+"만원/월");
         Glide.with(context).load(item.getImagePath()).into(holder.home_img);
     }
 
@@ -54,13 +55,14 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MainLi
 
     public class MainListHolder extends RecyclerView.ViewHolder {
         ImageView home_img;
-        TextView address,price;
+        TextView name,address,price;
 
         public MainListHolder(View itemView) {
             super(itemView);
             home_img = (ImageView)itemView.findViewById(R.id.home_img);
             address = (TextView)itemView.findViewById(R.id.address);
             price = (TextView)itemView.findViewById(R.id.price);
+            name = (TextView)itemView.findViewById(R.id.house_name);
 
         }
     }

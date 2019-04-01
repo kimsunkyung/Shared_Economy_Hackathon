@@ -81,8 +81,6 @@ public class JoinActivity2 extends AppCompatActivity {
                     Toast.makeText(JoinActivity2.this, "모든 항목을 입력해주세요", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(JoinActivity2.this, new_usergender, Toast.LENGTH_SHORT).show();
-                Toast.makeText(JoinActivity2.this, new_userrole, Toast.LENGTH_SHORT).show();
                 join_in();
             }
         });

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -23,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private MainListAdapter mainListAdapter;
     SharedPreferences mPref;
     ImageButton mypage_btn;
+    Button search_icon;
+    EditText search;
+    String location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +35,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
+        search = findViewById(R.id.search);
         recyclerView = findViewById(R.id.recycler_view);
         mypage_btn = findViewById(R.id.mypage_btn);
+        search_icon = findViewById(R.id.search_icon);
 
         mypage_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +54,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mainListAdapter);
         show_mainList();
 
-           }
+        search_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                location = search.getText().toString();
+                show_searchList();
+            }
+        });
+
+
+
+    }
 
     public void show_mainList(){
         MainListAsyncTask requestTask = new MainListAsyncTask(new MainListAsyncTask.MainListAsyncTaskHandler() {
@@ -78,6 +95,37 @@ public class MainActivity extends AppCompatActivity {
 
 
         requestTask.execute(ApiValue.API_MAIN+real_user_id);
+    }
+
+    public void show_searchList(){
+        MainListAsyncTask requestTask = new MainListAsyncTask(new MainListAsyncTask.MainListAsyncTaskHandler() {
+            @Override
+            public void onSuccessAppAsyncTask(MainResult result) {
+                if(result.success && result.mainHomeinfo.size()>0) {
+                    mainListAdapter.setImgData(result.mainHomeinfo);
+                    mainListAdapter.notifyDataSetChanged();
+                    recyclerView.setVisibility(View.VISIBLE);
+                    mainListAdapter.notifyDataSetChanged();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "서버 통신에 실패하였습니다.", Toast.LENGTH_LONG);
+                }
+            }
+
+            @Override
+            public void onFailAppAsysncask() {
+                Toast.makeText(getApplicationContext(), "서버 통신에 실패하였습니다.", Toast.LENGTH_LONG);
+            }
+
+            @Override
+            public void onCancelAppAsyncTask() {
+                Toast.makeText(getApplicationContext(), "사용자가 해당 작업을 중지하였습니다.", Toast.LENGTH_LONG);
+            }
+
+        });
+
+
+        requestTask.execute(ApiValue.API_MAIN+location);
     }
 
 

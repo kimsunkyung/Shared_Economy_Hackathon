@@ -75,8 +75,8 @@ public class HttpRequest {
 
             //원하는 프로퍼티 설정 //
             connection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-            connection.setRequestProperty("Accept", "application/json;charset=UTF-8");;
-            connection.setRequestProperty("application/json", "application/json;charset=UTF-8");
+            //connection.setRequestProperty("Accept", "application/json;charset=UTF-8");;
+            //connection.setRequestProperty("application/json", "application/json;charset=UTF-8");
             connection.setRequestProperty("Connection", "Keep-Alive");
 
 
@@ -151,7 +151,7 @@ public class HttpRequest {
         urlStr.append(SERVER_URL);
         urlStr.append(api_path);
 
-        Log.d("path", String.valueOf(urlStr));
+        Log.d("url : ", String.valueOf(urlStr));
         if(params != null && params.size() > 0){
             Iterator<String> paramsKey = params.keySet().iterator();
 

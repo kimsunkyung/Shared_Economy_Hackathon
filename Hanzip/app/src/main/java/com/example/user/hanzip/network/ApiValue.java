@@ -5,7 +5,8 @@ public class ApiValue{
     public static final String API_JOIN = "/signup";
     public static final String API_REGISTER = "/forsale";
     public static final String API_ZZIM = "/forsale/shopping/id";
-    public static final String API_MAIN = "/forsale/id";
+    public static final String API_MAIN = "/forsale/id/";
+    public static final String API_SEARCH = "/forsale/address/";
 
 
 }
