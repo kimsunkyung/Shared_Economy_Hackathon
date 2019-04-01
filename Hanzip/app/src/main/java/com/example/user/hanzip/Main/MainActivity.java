@@ -17,6 +17,7 @@ import com.example.user.hanzip.R;
 import com.example.user.hanzip.mypage.MypageActivity;
 import com.example.user.hanzip.network.ApiValue;
 import com.example.user.hanzip.network.response.MainResult;
+import com.example.user.hanzip.vo.MainListVO;
 
 import static com.example.user.hanzip.login.LoginActivity.real_user_id;
 
@@ -29,6 +30,37 @@ public class MainActivity extends AppCompatActivity {
     EditText search;
     String location;
 
+    private View.OnClickListener itemActivityListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = null;
+
+
+            MainListVO vo = (MainListVO) v.getTag();
+
+            intent = new Intent(MainActivity.this, HouseInfoActivity.class);
+
+            intent.putExtra("title", vo.getName());
+            intent.putExtra("addr", vo.getAddress());
+            intent.putExtra("price",String.valueOf(vo.getPrice()));
+            intent.putExtra("img", vo.getImagePath());
+            intent.putExtra("offer1", vo.getOfferFirst());
+            intent.putExtra("offer2", vo.getOfferSecond());
+            intent.putExtra("caution1", vo.getPrecautionFirst());
+            intent.putExtra("caution2", vo.getPrecautionSecond());
+
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener itemHeartListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            MainListVO vo = (MainListVO) v.getTag();
+
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         mypage_btn = findViewById(R.id.mypage_btn);
         search_icon = findViewById(R.id.search_icon);
-
         mypage_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-        mainListAdapter = new MainListAdapter(getApplicationContext());
+        mainListAdapter = new MainListAdapter(getApplicationContext(), itemActivityListener, itemHeartListener);
         recyclerView.setAdapter(mainListAdapter);
         show_mainList();
 
@@ -61,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 show_searchList();
             }
         });
-
 
 
     }
@@ -125,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        requestTask.execute(ApiValue.API_MAIN+location);
+        requestTask.execute(ApiValue.API_SEARCH+location);
     }
 
 

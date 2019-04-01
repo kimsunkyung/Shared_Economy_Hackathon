@@ -16,11 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <RelativeLayout
 
-                android:layout_gravity="center"
-                android:layout_width="300dp"
-                android:layout_height="200dp">
                 <ImageView
                     android:id="@+id/house_img"
                     android:src="@drawable/home4"
@@ -29,14 +25,13 @@
                     android:layout_width="250dp"
                     android:layout_height="200dp" />
 
-                <ImageButton
-                    android:id="@+id/zzim"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="250dp"
-                    android:background="@drawable/heart1"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp" />
-            </RelativeLayout>
+            <ImageButton
+                android:id="@+id/zzim"
+                android:background="@drawable/heart1"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
 
             <ImageView
                 android:layout_marginLeft="30dp"
@@ -56,7 +51,7 @@
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
+                    android:layout_height="35dp">
                     <ImageView
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="10dp"
@@ -65,18 +60,18 @@
                         android:layout_height="40dp" />
 
                     <TextView
+                        android:layout_marginTop="5dp"
                         android:id="@+id/home_addr"
-                        android:textSize="15dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="200dp"
-                        android:layout_height="40dp" />
+                        android:layout_height="35dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
+                    android:layout_height="35dp">
                     <ImageView
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="10dp"
@@ -85,8 +80,8 @@
                         android:layout_height="40dp" />
 
                     <TextView
+                        android:layout_marginTop="5dp"
                         android:id="@+id/home_price"
-                        android:textSize="15dp"
                         android:layout_marginLeft="20dp"
                         android:layout_width="200dp"
                         android:layout_height="40dp" />
@@ -96,7 +91,7 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
+                    android:layout_height="35dp">
                     <ImageView
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="10dp"
@@ -105,6 +100,7 @@
                         android:layout_height="40dp" />
 
                     <TextView
+                        android:layout_marginTop="5dp"
                         android:id="@+id/home_sex"
                         android:textSize="15dp"
                         android:layout_marginLeft="20dp"
@@ -123,31 +119,24 @@
                 android:layout_height="25dp" />
 
             <LinearLayout
+                android:orientation="vertical"
                 android:layout_gravity="center"
                 android:background="@drawable/gray_box"
                 android:layout_width="350dp"
                 android:layout_height="90dp">
 
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-                    <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/point"
-                        android:layout_width="10dp"
-                        android:layout_height="10dp" />
-
                     <TextView
-                        android:id="@+id/caution"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="200dp"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/caution1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp" />
-                </LinearLayout>
-
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/caution2"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
 
             </LinearLayout>
 
@@ -160,32 +149,24 @@
                 android:layout_height="25dp" />
 
             <LinearLayout
+                android:orientation="vertical"
                 android:layout_gravity="center"
                 android:background="@drawable/gray_box"
                 android:layout_width="350dp"
                 android:layout_height="90dp">
 
-
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-                    <ImageView
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:src="@drawable/point"
-                        android:layout_width="10dp"
-                        android:layout_height="10dp" />
-
                     <TextView
-                        android:id="@+id/provide"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_width="200dp"
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/provide1"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
                         android:layout_height="40dp" />
-                </LinearLayout>
 
+                <TextView
+                    android:id="@+id/provide2"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
             </LinearLayout>
 
 
