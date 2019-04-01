@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("offer2", vo.getOfferSecond());
             intent.putExtra("caution1", vo.getPrecautionFirst());
             intent.putExtra("caution2", vo.getPrecautionSecond());
+            intent.putExtra("userId",vo.getUserId());
 
             startActivity(intent);
         }

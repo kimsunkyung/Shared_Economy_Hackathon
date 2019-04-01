@@ -42,7 +42,7 @@ public class MypageListAdapter extends RecyclerView.Adapter<MypageListAdapter.My
         if(position>mypageList.size()){}
         MainListVO item = mypageList.get(position);
         ((MypageListAdapter.MypageListHolder)holder).address.setText(item.getAddress().toString());
-        ((MypageListAdapter.MypageListHolder)holder).price.setText(item.getPrice());
+        ((MypageListAdapter.MypageListHolder)holder).price.setText(String.valueOf(item.getPrice())+"만원/월");
         Glide.with(context).load(item.getImagePath()).into(holder.home_img);
     }
 

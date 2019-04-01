@@ -7,6 +7,8 @@ public class ApiValue{
     public static final String API_ZZIM = "/forsale/shopping/id";
     public static final String API_MAIN = "/forsale/id/";
     public static final String API_SEARCH = "/forsale/address/";
+    public static final String API_ZZIM_BUTTON = "/shopping";
+
 
 
 }

@@ -51,7 +51,7 @@ public class MypageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         mypageListAdapter = new MypageListAdapter(getApplicationContext(),itemActivityListener);
         recyclerView.setAdapter(mypageListAdapter);
-        mypage_user_name.setText(real_user_id);
+        mypage_user_name.setText(real_user_id+" 님");
 
         plus_house.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +60,7 @@ public class MypageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        mypageImg();
 
     }
 
@@ -100,7 +101,7 @@ public class MypageActivity extends AppCompatActivity {
         });
 
 
-        requestTask.execute(ApiValue.API_ZZIM+real_user_id);
+        requestTask.execute(ApiValue.API_ZZIM+"/"+real_user_id);
 
     }
 }

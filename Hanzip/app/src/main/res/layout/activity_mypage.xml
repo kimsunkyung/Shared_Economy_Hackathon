@@ -48,7 +48,7 @@
     <LinearLayout
         android:background="@drawable/gray_box"
         android:layout_gravity="center"
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="250dp">
         <ScrollView
             android:layout_width="match_parent"

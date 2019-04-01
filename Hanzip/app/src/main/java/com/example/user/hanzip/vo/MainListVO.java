@@ -16,8 +16,19 @@ public class MainListVO {
     @SerializedName("age")
     private int age =0;
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     @SerializedName("name")
     private String name ="";
+
+    @SerializedName("userId")
+    private String userId ="";
 
     public String getName() {
         return name;
